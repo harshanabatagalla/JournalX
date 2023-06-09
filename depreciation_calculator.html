@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Depreciation Calculator</title>
+	<style type="text/css">
+		#td_right{text-align: right;}
+	</style>
+	<!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.theme.default.css">
+
+    <!-- Bootstrap + Ollie main styles -->
+	<link rel="stylesheet" href="assets/css/ollie.css">
+
+	<script type="text/javascript">
+		//global variables
+		var cal_counter_PUB = 0;
+				
+		function SLB_calculate(){
+			
+			let total_cost = Number(document.getElementById("asset_val_SLB").value);
+			let salvage_value = Number(document.getElementById("salv_val_SLB").value);
+			let useful_life_years_SLB = Number(document.getElementById("useful_life_SLB").value);
+			let depreciation_per_month = (total_cost-salvage_value)/(12*useful_life_years_SLB);
+			let startingYearSLB = Number(document.getElementById("statring_year_SLB_in").value);
+			selectElement = document.querySelector('#starting_month_SLB');
+        	output = selectElement.options[selectElement.selectedIndex].value;
+			let selected_month = Number(output);
+			let depreciation_SLB;
+			let m = 13 - selected_month;
+			let firstYearEndDep_SLB = m*depreciation_per_month;
+			let lastyearDep_SLB = (((12-m)/12)*(total_cost-salvage_value)/useful_life_years_SLB);
+			let middleYearDep_SLB = ((total_cost-salvage_value)/(useful_life_years_SLB));
+
+
+
+			let table = document.getElementById("SLB_answers");
+			let row = table.insertRow(0);
+  			let cell1 = row.insertCell(0);
+  			let cell2 = row.insertCell(1);
+  			cell1.innerHTML = "Year";
+  			cell2.innerHTML = "Depreciation";
+
+
+			for (let i = 0; i <= useful_life_years_SLB; i++) {
+				row = table.insertRow(i+1);
+  				cell1 = row.insertCell(0);
+  				cell2 = row.insertCell(1);
+  				if(i==0)
+  					cell2.innerHTML = firstYearEndDep_SLB.toFixed(2);
+  				else if(i==useful_life_years_SLB)
+  					cell2.innerHTML = lastyearDep_SLB.toFixed(2);
+  				else
+  					cell2.innerHTML = middleYearDep_SLB.toFixed(2);
+
+  				cell1.innerHTML = startingYearSLB + i;
+			
+			}
+
+			
+		}
+
+		function RBB_calculate(){
+			let startingYearRBB = Number(document.getElementById("statring_year_RBB_in").value);
+			let total_cost_RBB = Number(document.getElementById("asset_val_RBB").value);
+			let salvage_value_RBB = Number(document.getElementById("salv_val_RBB").value);
+			let useful_life_years_RBB = Number(document.getElementById("useful_life_RBB").value);
+			let rate = (1 - Math.pow( (salvage_value_RBB/total_cost_RBB), 1/(useful_life_years_RBB) ) )*100;
+			let carrying_value_RBB = total_cost_RBB;
+
+			let table = document.getElementById("RBB_answers");
+			let row = table.insertRow(0);
+  			let cell1 = row.insertCell(0);
+  			let cell2 = row.insertCell(1);
+  			cell1.innerHTML = "Year";
+  			cell2.innerHTML = "Depreciation";
+
+			for (let i = 0; i < useful_life_years_RBB; i++) {
+				depreciation_RBB = carrying_value_RBB*rate/100;
+				carrying_value_RBB = carrying_value_RBB - depreciation_RBB;
+				row = table.insertRow(i+1);
+  				cell1 = row.insertCell(0);
+  				cell2 = row.insertCell(1);
+  				cell1.innerHTML = startingYearRBB + i;
+  				cell2.innerHTML = depreciation_RBB.toFixed(2);
+			}
+
+		}
+
+		function PUB_calculate(){
+			
+			let startingYear_PUB =  Number(document.getElementById("statring_year_PUB_in").value);
+			let total_cost_PUB = Number(document.getElementById("asset_val_PUB").value);
+			let salvage_value_PUB = Number(document.getElementById("salv_val_PUB").value);
+			let total_possible_units_PUB = Number(document.getElementById("total_units").value);
+			let units_produced_PUB = Number(document.getElementById("units_produced_PUB").value);
+			let currentyear_PUB = startingYear_PUB+cal_counter_PUB;
+			let depreciation_per_unit = (total_cost_PUB-salvage_value_PUB)/total_possible_units_PUB;
+
+			let depreciation_PUB = depreciation_per_unit*units_produced_PUB;
+			let table = document.getElementById("PUB_answers");
+
+			if(cal_counter_PUB==0){
+				let row = table.insertRow(0);
+	  			let cell1 = row.insertCell(0);
+	  			let cell2 = row.insertCell(1);
+	  			cell1.innerHTML = "Year";
+	  			cell2.innerHTML = "Depreciation";
+			}
+
+
+  			let row = table.insertRow(-1);
+  			let cell1 = row.insertCell(0);
+  			let cell2 = row.insertCell(1);
+
+  			cell1.innerHTML = currentyear_PUB;
+  			cell2.innerHTML = depreciation_PUB.toFixed(2);
+  			
+ 			cal_counter_PUB++;
+  			document.getElementById("units_produced_PUB").value = "";
+  			document.getElementById("current_year_PUB").innerHTML = "Units Produced in "+ (currentyear_PUB+1);
+		}
+	</script>
+
+</head>
+<body> 
+	<a href="Home.html">
+		<input type="button" value="Home" name="Calculate_SLB" class="nav-link btn btn-primary">
+	</a>
+	<center>
+		<table border="3px" class="table table-bordered table-hover" style="width: 80%">
+			<tr><td colspan="3" style="background-color: #818F8E;"><center><h2>Depreciation Calculator</h2></center></td></tr>
+			<tr><td>
+				<center>
+				<form>
+				<table style="background-color:#fff2e6">
+					<tr>
+						<th colspan="2" ><center><h4 class="carousel-title">Straight Line Depreciation</h4></center></th>
+					</tr>
+					<tr>
+						<td id="td_right">Asset Cost: &ensp;</td>
+						<td><input type="text" id="asset_val_SLB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Salvage Value: &ensp;</td>
+						<td><input type="text" id="salv_val_SLB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Useful Life(Years): &ensp;</td>
+						<td><input type="text" id="useful_life_SLB"></td>
+					</tr>
+					<tr>
+						<td id="td_right" colspan="2"><center><b>Placed in Service:</b></center></td>
+				
+					</tr>
+					<tr>
+						<td id="td_right">Starting Month: &ensp;</td>
+						<td>
+							<select id="starting_month_SLB" id="cars">
+  								<option selected value='1'>Janaury</option>
+							    <option value='2'>February</option>
+								<option value="3">March</option>
+								<option value="4">April</option>
+							    <option value='5'>May</option>
+							    <option value='6'>June</option>
+							    <option value='7'>July</option>
+							    <option value='8'>August</option>
+							    <option value='9'>September</option>
+							    <option value='10'>October</option>
+							    <option value='11'>November</option>
+							    <option value='12'>December</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td id="td_right">Starting Year: &ensp;</td>
+						<td><input type="text" id="statring_year_SLB_in"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="reset" value= "Clear" name="clear_SLB" class="btn btn-primary btn-rounded">
+							<input type="button" value="calculate" name="Calculate_SLB" onclick="SLB_calculate(); " class="btn btn-primary btn-rounded">
+						</td>
+					</tr>
+				</table>
+			</form>
+			</center>
+			</td>
+
+			<td>
+				<center>
+				<form>
+				<table style="background-color:#fff2e6">
+					<tr>
+						<th colspan="2"><center><h4 class="carousel-title">Reducing Balance Depreciation</h4></center></th>
+					</tr>
+					<tr>
+						<td id="td_right">Asset Cost: &ensp;</td>
+						<td><input type="text" id="asset_val_RBB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Salvage Value: &ensp;</td>
+						<td><input type="text" id="salv_val_RBB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Useful Life(Years): &ensp;</td>
+						<td><input type="text" id="useful_life_RBB"></td>
+					</tr>
+					<tr>
+						<td id="td_right" colspan="2"><center><b>Placed in Service:</b></center></td>
+					
+					</tr>
+					<tr>
+						<td id="td_right">Starting Year: &ensp;</td>
+						<td><input type="text" id="statring_year_RBB_in"></td>
+					</tr>
+					<tr><td colspan="2"><br></td></tr>
+					<tr>
+						<td colspan="2">
+							<input type="reset" value= "Clear" name="clear_RBB" class="btn btn-primary btn-rounded">
+							<input type="button" value="calculate" name="Calculate_RBB" onclick="RBB_calculate();" class="btn btn-primary btn-rounded">
+						</td>
+					</tr>
+				</table>
+			</form>
+			</center>
+		</td>
+
+		<td>
+				<center>
+				<form>
+				<table style="background-color:#fff2e6">
+					<tr>
+						<th colspan="2"><center><h4 class="carousel-title">Production Unit Depreciation</h4></center></th>
+					</tr>
+					<tr>
+						<td id="td_right">Asset Cost: &ensp;</td>
+						<td><input type="text" id="asset_val_PUB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Salvage Value: &ensp;</td>
+						<td><input type="text" id="salv_val_PUB"></td>
+					</tr>
+					<tr>
+						<td id="td_right">Total Units Possible: &ensp;</td>
+						<td><input type="text" id="total_units"></td>
+					</tr>
+					<tr>
+						<td id="td_right" colspan="2"><b><center>Placed in Service:</center></b></td>
+					
+					</tr>
+					<tr>
+						<td id="td_right">Starting Year: &ensp;</td>
+						<td><input type="text" id="statring_year_PUB_in"></td>
+					</tr>
+					<tr>
+						<td id="td_right"><span id="current_year_PUB">Units Produced in 1st Year:</span> &ensp;</td>
+						<td><input type="text" id="units_produced_PUB"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="reset" value= "Clear" name="clear_PUB" class="btn btn-primary btn-rounded">
+							<input type="button" value="Calculate" name="Calculate_PUB" onclick="PUB_calculate();" class="btn btn-primary btn-rounded">
+						</td>
+					</tr>
+				</table>
+			</form>
+			</center>
+		</td>
+			
+<!-- Answers -->
+	<!-- Straight Line Basis -->
+		</tr>
+
+			<tr><td>
+				<center>
+					<br>
+					<h4 class="carousel-title">Straight Line Basis Answers</h4><br>
+					<table id="SLB_answers" border="1px" style="width: 85%; background-color:#c6ecd9">
+					
+					</table>
+				</center>
+			</td>
+	<!-- Reducing Balance Basis -->
+			<td>
+				<br>
+				<center>
+					<h4 class="carousel-title">Reducing Balance Basis Answers</h4><br>
+					<table id="RBB_answers" border="1px" style="background-color:#c6ecd9; width: 85%">
+					
+					</table>
+				</center>
+			</td>
+	<!-- Production Unit Basis -->
+		<td>
+			<br>
+				<center>
+					<h4 class="carousel-title">Production Unit Basis Answers</h4><br>
+					<table id="PUB_answers" border="1px" style="background-color:#c6ecd9; width: 85%">
+					
+					</table>
+				</center>
+			</td>
+		</tr>
+		</table>
+		</center>
+</body>
+</html>
