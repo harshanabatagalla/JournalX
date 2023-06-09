@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trial Balance</title>
+	<!-- header styles -->
+
+	<!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.carousel.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.theme.default.css">
+
+    <!-- Bootstrap + Ollie main styles -->
+	<link rel="stylesheet" href="assets/css/ollie.css">
+
+</head>
+<body>
+	<a href="Home.html">
+		<input type="button" value="Home" name="Calculate_SLB" class="nav-link btn btn-primary">
+	</a>
+	<center>
+            <h1 class="carousel-title">Trial Balance</h1>
+
+	<form action="statements.php" method="post">
+		<table border="1px" class="table table-bordered table-hover" style="width: 50%">
+			<tr> <th style="background-color: #818F8E;">Account</th> <th style="background-color: #818F8E;">Debit</th> <th style="background-color: #818F8E;">Credit</th> </tr>
+			<tr><td>Equity</td><td><input type="text" style="width: 70%" name="EquityD"></td><td><input type="text" style="width: 70%" name="EquityC"> </td></tr>
+			<tr><td>Purchase</td><td><input type="text" style="width: 70%" name="PurchaseD"></td><td><input type="text" style="width: 70%" name="PurchaseC"> </td></tr>
+			<tr><td>Custom duty</td><td><input type="text" style="width: 70%" name="Custom_dutyC"></td><td><input type="text" style="width: 70%" name="Custom_dutyC"> </td></tr>
+			<tr><td>Return Inwards</td><td><input type="text" style="width: 70%" name="Return_InwardsD"></td><td><input type="text" style="width: 70%" name="Return_InwardsC"> </td></tr>
+			<tr><td>Return outwards</td><td><input type="text" style="width: 70%" name="Return_outwardsD"></td><td><input type="text" style="width: 70%" name="Return_outwardsC"> </td></tr>
+			<tr><td>Drawings</td><td><input type="text" style="width: 70%" name="DrawingsD"></td><td><input type="text" style="width: 70%" name="DrawingsC"> </td></tr>
+			<tr><td>Discount received</td><td><input type="text" style="width: 70%" name="Discount_receivedD"></td><td><input type="text" style="width: 70%" name="Discount_receivedC"> </td></tr>
+			<tr><td>Electricity</td><td><input type="text" style="width: 70%" name="ElectricityD"></td><td><input type="text" style="width: 70%" name="ElectricityC"> </td></tr>
+			<tr><td>Rates</td><td><input type="text" style="width: 70%" name="RatesD"></td><td><input type="text" style="width: 70%" name="RatesC"> </td></tr>
+			<tr><td>Repair expense- Delivery van</td><td><input type="text" style="width: 70%" name="repairD"></td><td><input type="text" style="width: 70%" name="repairC"> </td></tr>
+			<tr><td>Sales</td><td><input type="text" style="width: 70%" name="SalesD"></td><td><input type="text" style="width: 70%" name="SalesC"> </td></tr>
+			<tr><td>Freight charges</td><td><input type="text" style="width: 70%" name="fchargesD"></td><td><input type="text" style="width: 70%" name="fchargesC"> </td></tr>
+			<tr><td>Carriage inwards</td><td><input type="text" style="width: 70%" name="carryinD"></td><td><input type="text" style="width: 70%" name="carryinC"> </td></tr>
+			<tr><td>closing inventory</td><td><input type="text" style="width: 70%" name="cinventoryD"></td><td><input type="text" style="width: 70%" name="cinventoryC"> </td></tr>
+			<tr><td>Advertisement</td><td><input type="text" style="width: 70%" name="AdvertisementD"></td><td><input type="text" style="width: 70%" name="AdvertisementC"> </td></tr>
+			<tr><td>Motor vehicle </td><td><input type="text" style="width: 70%" name="mvehicleD"></td><td><input type="text" style="width: 70%" name="mvehicleC"> </td></tr>
+			<tr><td>Plant and Machinery </td><td><input type="text" style="width: 70%" name="machineryD"></td><td><input type="text" style="width: 70%" name="machineryC"> </td></tr>
+			<tr><td>Building</td><td><input type="text" style="width: 70%" name="BuildingD"></td><td><input type="text" style="width: 70%" name="BuildingC"> </td></tr>
+			<tr><td>Land</td><td><input type="text" style="width: 70%" name="LandD"></td><td><input type="text" style="width: 70%" name="LandC"> </td></tr>
+			<tr><td>Delivery Van</td><td><input type="text" style="width: 70%" name="dvanD"></td><td><input type="text" style="width: 70%" name="dvanC"> </td></tr>
+			<tr><td>Loan interest</td><td><input type="text" style="width: 70%" name="LInterestD"></td><td><input type="text" style="width: 70%" name="LInterestC"> </td></tr>
+			<tr><td>Bank</td><td><input type="text" style="width: 70%" name="BankD"></td><td><input type="text" style="width: 70%" name="BankC"> </td></tr>
+			<tr><td>Insurance</td><td><input type="text" style="width: 70%" name="InsuranceD"></td><td><input type="text" style="width: 70%" name="InsuranceC"> </td></tr>
+			<tr><td>Salaries</td><td><input type="text" style="width: 70%" name="SalariesD"></td><td><input type="text" style="width: 70%" name="SalariesC"> </td></tr>
+			<tr><td>Motor expenses</td><td><input type="text" style="width: 70%" name="mExpD"></td><td><input type="text" style="width: 70%" name="mExpC"> </td></tr>
+			<tr><td>Office expenses</td><td><input type="text" style="width: 70%" name="offExpD"></td><td><input type="text" style="width: 70%" name="offExpC"> </td></tr>
+			<tr><td>Promotion expenses</td><td><input type="text" style="width: 70%" name="pExpD"></td><td><input type="text" style="width: 70%" name="pExpC"> </td></tr>
+			<tr><td>Donation</td><td><input type="text" style="width: 70%" name="DonationD"></td><td><input type="text" style="width: 70%" name="DonationC"> </td></tr>
+			<tr><td>Trade payable</td><td><input type="text" style="width: 70%" name="Trade_payableD"></td><td><input type="text" style="width: 70%" name="Trade_payableC"> </td></tr>
+			<tr><td>Water bill expenses</td><td><input type="text" style="width: 70%" name="wBillD"></td><td><input type="text" style="width: 70%" name="wBillC"> </td></tr>
+			<tr><td>Sundry expenses</td><td><input type="text" style="width: 70%" name="sExpD"></td><td><input type="text" style="width: 70%" name="sExpC"> </td></tr>
+			<tr><td>Bank Loan</td><td><input type="text" style="width: 70%" name="bloanD"></td><td><input type="text" style="width: 70%" name="bloanC"> </td></tr>
+			<tr><td>Loss on disposal-Furniture</td><td><input type="text" style="width: 70%" name="disPosD"></td><td><input type="text" style="width: 70%" name="disPosC"> </td></tr>
+			<tr><td>Bank charges</td><td><input type="text" style="width: 70%" name="Bank_chargesD"></td><td><input type="text" style="width: 70%" name="Bank_chargesC"> </td></tr>
+			<tr><td>Carriage outwards</td><td><input type="text" style="width: 70%" name="Carriage_outwardsD"></td><td><input type="text" style="width: 70%" name="Carriage_outwardsC"> </td></tr>
+			<tr><td>Discount allowed</td><td><input type="text" style="width: 70%" name="Discount_allowed_D"></td><td><input type="text" style="width: 70%" name="Discount_allowed_C"> </td></tr>
+			<tr><td>Office maintenance expenses</td><td><input type="text" style="width: 70%" name="offMaintenanceD"></td><td><input type="text" style="width: 70%" name="offMaintenanceC"> </td></tr>
+			<tr><td>Commision income</td><td><input type="text" style="width: 70%" name="commID"></td><td><input type="text" style="width: 70%" name="commIC"> </td></tr>
+			<tr><td>Overdraft Interest</td><td><input type="text" style="width: 70%" name="odintD"></td><td><input type="text" style="width: 70%" name="odintC"> </td></tr>
+			<tr><td>Rent income</td><td><input type="text" style="width: 70%" name="rentInD"></td><td><input type="text" style="width: 70%" name="rentInC"> </td></tr>
+			<tr><td>Debtors</td><td><input type="text" style="width: 70%" name="debtorsD"></td><td><input type="text" style="width: 70%" name="debtorsC"> </td></tr>
+			<tr><td>Creditors</td><td><input type="text" style="width: 70%" name="creditorsD"></td><td><input type="text" style="width: 70%" name="creditorsC"> </td></tr>
+			<tr><td>Opening Inventory:</td><td colspan="2"><input type="text" style="width: 85.5%" name="opening_inv" style="width: 70%";> <br><br></td></tr>
+		</table>
+		<center>
+				 <br>
+				
+ 				<input type="submit" name="submit" class="btn btn-primary btn-rounded" style="width: 20%">
+ 				<br><br>
+ 				
+		</center>
+	</form>
+	</center>
+</body>
+</html>
